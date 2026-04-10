@@ -1,0 +1,22 @@
+name: Copilot Code Review
+
+on:
+  pull_request:
+    branches: [ main ]      # triggers on every Pull Request
+
+jobs:
+  copilot-review:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write   # allows Copilot to comment on PR
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Copilot Code Review
+        uses: github/copilot-code-review@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

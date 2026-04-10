@@ -2,12 +2,13 @@ name: My First CI Pipeline
 
 on:
   push:
-    branches: [ main ]   # runs every time you do git push
+    branches: [ main ]
+  pull_request:              # ← ADD THIS
+    branches: [ main ]       # ← ADD THIS
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Step 1 - Checkout my code
         uses: actions/checkout@v3
