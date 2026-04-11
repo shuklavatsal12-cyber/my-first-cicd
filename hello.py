@@ -5,5 +5,7 @@ def greet(name):
 def farewell(name):
     return f"Goodbye, {name}!"
 
+
 print(greet("World"))
+
 print(farewell("World"))
