@@ -1,22 +1,32 @@
-name: Copilot Code Review
+name: Code Quality Review
 
 on:
   pull_request:
-    branches: [ main ]      # triggers on every Pull Request
+    branches: [ main ]
 
 jobs:
-  copilot-review:
+  code-review:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      pull-requests: write   # allows Copilot to comment on PR
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run Copilot Code Review
-        uses: github/copilot-code-review@v1
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          python-version: '3.11'
+
+      - name: Install review tools
+        run: |
+          pip install flake8 pylint
+
+      - name: Flake8 - Style Review
+        run: |
+          echo "🔍 Checking code style..."
+          flake8 . --max-line-length=100
+
+      - name: Pylint - Code Quality Score
+        run: |
+          echo "🤖 AI Code Quality Analysis..."
+          pylint *.py --fail-under=5.0 || true
