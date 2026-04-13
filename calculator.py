@@ -19,6 +19,7 @@ def divide(a, b):
     # write code here
     return a / b
 
+
 # test it
 print(add(10, 5))       # should print 15
 print(subtract(10, 5))  # should print 5
