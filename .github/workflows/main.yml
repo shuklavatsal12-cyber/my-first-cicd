@@ -19,4 +19,4 @@ jobs:
           python-version: '3.11'
 
       - name: Step 3 - Run my Python file
-        run: calculator.py
+        run: python calculator.py
