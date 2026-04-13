@@ -1,0 +1,19 @@
+# create a new branch
+git checkout -b test-copilot-review
+
+# make a small change to hello.py
+cat > hello.py << 'EOF'
+def greet(name):
+    return f"Hello, {name}!"
+
+def farewell(name):
+    return f"Goodbye, {name}!"
+
+print(greet("World"))
+print(farewell("World"))
+EOF
+
+# push the branch
+git add .
+git commit -m "added farewell function"
+git push origin test-copilot-review
