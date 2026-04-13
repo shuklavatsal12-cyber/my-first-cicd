@@ -1,6 +1,6 @@
 # your task - write these 4 functions:
 
-def add(a, b):  
+def add(a, b):
     # write code here
     return a + b
 
